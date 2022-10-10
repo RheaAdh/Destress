@@ -30,7 +30,7 @@ public class PersonAdapter extends ArrayAdapter<Person> {
         convertView = layoutInflater.inflate(mResource,parent,false);
 
         ImageView imageView = convertView.findViewById(R.id.imgLeft);
-        TextView txtName = convertView.findViewById(R.id.txt);
+        TextView txtName = convertView.findViewById(R.id.txtCard);
         imageView.setImageResource(getItem(position).getImage());
         txtName.setText(getItem(position).getName());
 

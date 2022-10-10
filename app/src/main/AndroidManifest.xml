@@ -22,6 +22,10 @@
             android:name=".Admin"
             android:exported="false"></activity>
         <activity
+            android:name=".SignUp"
+            android:exported="false" >
+        </activity>
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>

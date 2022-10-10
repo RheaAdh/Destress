@@ -16,7 +16,7 @@
         android:src="@color/black"
         />
     <TextView
-        android:id="@+id/txt"
+        android:id="@+id/txtCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/imgLeft"
@@ -24,6 +24,18 @@
         android:textSize="20dp"
 
         />
+        <TextView
+            android:id="@+id/txtSteps"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+        <TextView
+            android:id="@+id/txtTime"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+        <TextView
+            android:id="@+id/txtEmail"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"

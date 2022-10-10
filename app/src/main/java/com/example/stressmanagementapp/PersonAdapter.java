@@ -30,10 +30,15 @@ public class PersonAdapter extends ArrayAdapter<Person> {
         convertView = layoutInflater.inflate(mResource,parent,false);
 
         ImageView imageView = convertView.findViewById(R.id.imgLeft);
-        TextView txtName = convertView.findViewById(R.id.txt);
+        TextView txtName = convertView.findViewById(R.id.txtCard);
+        TextView txtSteps = convertView.findViewById(R.id.txtSteps);
+        TextView txtTime = convertView.findViewById(R.id.txtTime);
+        TextView txtEmail = convertView.findViewById(R.id.txtEmail);
         imageView.setImageResource(getItem(position).getImage());
         txtName.setText(getItem(position).getName());
-
+        txtSteps.setText(getItem(position).getSteps());
+        txtTime.setText(getItem(position).getTime());
+        txtEmail.setText(getItem(position).getEmail());
         return convertView;
     }
 }

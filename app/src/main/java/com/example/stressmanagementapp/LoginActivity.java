@@ -23,8 +23,9 @@ public class LoginActivity extends AppCompatActivity {
 
             Toast.makeText(LoginActivity.this, username + "has logged in!", Toast.LENGTH_LONG).show();
 
-//            Intent intent = new Intent(LoginActivity.this, CareGiver.class);
-            Intent intent = new Intent(LoginActivity.this, Admin.class);
+            Intent intent = new Intent(LoginActivity.this, CareGiver.class);
+//            Intent intent = new Intent(LoginActivity.this, Admin.class);
+//            Intent intent = new Intent(LoginActivity.this, Profile.class);
             intent.putExtra("username", username);
             startActivity(intent);
         });

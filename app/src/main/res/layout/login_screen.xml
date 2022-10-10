@@ -66,17 +66,30 @@
         app:layout_constraintTop_toBottomOf="@id/tv2"
         app:layout_constraintLeft_toLeftOf="@id/guideline_login"/>
 
+    <TextView
+        android:id="@+id/linkToSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Don't have an account? Sign up."
+        android:textColor="#636365"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@id/et2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
     <Button
         android:id="@+id/btnLogin"
+        android:layout_marginTop="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingHorizontal="50dp"
         android:text="@string/log_in"
         android:textColor="@color/black"
         android:backgroundTint="#ABD9FF"
-        app:layout_constraintTop_toBottomOf="@id/et2"
+        app:layout_constraintTop_toBottomOf="@id/linkToSignup"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

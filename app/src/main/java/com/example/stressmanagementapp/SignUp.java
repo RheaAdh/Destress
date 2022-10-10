@@ -3,7 +3,10 @@ package com.example.stressmanagementapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +24,17 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View view) {
                 Intent myIntent = new Intent(SignUp.this, LoginActivity.class);
                 startActivity(myIntent);
+            }
+        });
+
+        Button btnRegister = findViewById(R.id.btnRegister);
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(SignUp.this, "User registered successfully", Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(SignUp.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
     }

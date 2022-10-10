@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,16 +39,17 @@ public class CareGiver extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(CareGiver.this, Profile.class);
-//                String product = ((TextView) view).getText().toString();
                 TextView tv = (TextView)view.findViewById(R.id.txtCard);
                 String name = tv.getText().toString();
                 intent.putExtra("name",name);
-//                String steps = view.findViewById(R.id.txtSteps).toString();
-                TextView tv2 = (TextView)view.findViewById(R.id.txtCard);
-                String email = tv.getText().toString();
-                intent.putExtra("name",name);//                String time = view.findViewById(R.id.txtTime).toString();
-//                intent.putExtra("steps",steps);
-//                intent.putExtra("time",time);
+                TextView tv2 = (TextView)view.findViewById(R.id.txtSteps);
+                String steps = tv2.getText().toString();
+                intent.putExtra("steps",steps);
+                TextView tv3 = (TextView)view.findViewById(R.id.txtSteps);
+                String email = tv3.getText().toString();
+                intent.putExtra("email",email);
+                String time = tv3.getText().toString();
+                intent.putExtra("time",time);
                 startActivity(intent);
             }
         });

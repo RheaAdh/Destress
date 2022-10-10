@@ -3,11 +3,11 @@ package com.example.stressmanagementapp;
 public class Person {
     int Image;
     String Name;
-    int time;
-    int steps;
+    String time;
+    String steps;
     String email;
 
-    public Person(int image, String name, int time, int steps, String email) {
+    public Person(int image, String name, String time, String steps, String email) {
         Image = image;
         Name = name;
         this.time = time;
@@ -31,19 +31,19 @@ public class Person {
         Name = name;
     }
 
-    public int getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
-    public int getSteps() {
+    public String getSteps() {
         return steps;
     }
 
-    public void setSteps(int steps) {
+    public void setSteps(String steps) {
         this.steps = steps;
     }
 

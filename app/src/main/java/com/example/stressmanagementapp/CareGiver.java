@@ -19,18 +19,10 @@ public class CareGiver extends AppCompatActivity {
         setContentView(R.layout.caregiver);
         ListView listView=findViewById(R.id.listView);
         ArrayList<Person> personArrayList = new ArrayList<>();
-        personArrayList.add(new Person(R.drawable.girl,"Rhea Adhikari",200,5000,"rheadhikari@gmail.com"));
-        personArrayList.add(new Person(R.drawable.boy,"Pranshul Goyal",300,7000,"rheadhikari@gmail.com"));
-        personArrayList.add(new Person(R.drawable.girl,"Juhi Mehta",100,9000,"rheadhikari@gmail.com"));
-        personArrayList.add(new Person(R.drawable.girl,"Rhea Adhikari",200,5000,"rheadhikari@gmail.com"));
-        personArrayList.add(new Person(R.drawable.boy,"Pranshul Goyal",300,7000,"rheadhikari@gmail.com"));
-        personArrayList.add(new Person(R.drawable.girl,"Juhi Mehta",100,9000,"rheadhikari@gmail.com"));
-        personArrayList.add(new Person(R.drawable.girl,"Rhea Adhikari",200,5000,"rheadhikari@gmail.com"));
-        personArrayList.add(new Person(R.drawable.boy,"Pranshul Goyal",300,7000,"rheadhikari@gmail.com"));
-        personArrayList.add(new Person(R.drawable.girl,"Juhi Mehta",100,9000,"rheadhikari@gmail.com"));
-        personArrayList.add(new Person(R.drawable.girl,"Rhea Adhikari",200,5000,"rheadhikari@gmail.com"));
-        personArrayList.add(new Person(R.drawable.boy,"Pranshul Goyal",300,7000,"rheadhikari@gmail.com"));
-        personArrayList.add(new Person(R.drawable.girl,"Juhi Mehta",100,9000,"rheadhikari@gmail.com"));
+        personArrayList.add(new Person(R.drawable.girl,"Rhea Adhikari","200","5000","rheadhikari@gmail.com"));
+        personArrayList.add(new Person(R.drawable.boy,"Pranshul Goyal","300","7000","pranshul@gmail.com"));
+        personArrayList.add(new Person(R.drawable.girl,"Juhi Mehta","100","9000","juhi@gmail.com"));
+
 
         PersonAdapter personAdapter = new PersonAdapter(this,R.layout.list_row,personArrayList);
         listView.setAdapter(personAdapter);
@@ -42,13 +34,15 @@ public class CareGiver extends AppCompatActivity {
                 TextView tv = (TextView)view.findViewById(R.id.txtCard);
                 String name = tv.getText().toString();
                 intent.putExtra("name",name);
+
                 TextView tv2 = (TextView)view.findViewById(R.id.txtSteps);
                 String steps = tv2.getText().toString();
                 intent.putExtra("steps",steps);
-                TextView tv3 = (TextView)view.findViewById(R.id.txtSteps);
+                TextView tv3 = (TextView)view.findViewById(R.id.txtEmail);
                 String email = tv3.getText().toString();
                 intent.putExtra("email",email);
-                String time = tv3.getText().toString();
+                TextView tv4 = (TextView)view.findViewById(R.id.txtTime);
+                String time = tv4.getText().toString();
                 intent.putExtra("time",time);
                 startActivity(intent);
             }

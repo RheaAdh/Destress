@@ -10,20 +10,21 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
+
         String name= getIntent().getStringExtra("name");
         TextView err = (TextView) findViewById(R.id.textView);
-        err.setText(name);
+        err.setText("Name : " + name);
 
         String email= getIntent().getStringExtra("email");
         TextView err1 = (TextView) findViewById(R.id.textView2);
-        err1.setText(email);
+        err1.setText("Email ID : "+email);
 
         String steps= getIntent().getStringExtra("steps");
         TextView err2 = (TextView) findViewById(R.id.textView4);
-        err2.setText(steps);
+        err2.setText("Steps : "+steps);
 
         String time= getIntent().getStringExtra("time");
         TextView err3 = (TextView) findViewById(R.id.textView5);
-        err3.setText(time);
+        err3.setText("Time : "+time);
     }
 }

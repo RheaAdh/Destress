@@ -26,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
         Button btnSubmit = findViewById(R.id.btnLogin);
         btnSubmit.setOnClickListener(view -> {
             EditText etName = findViewById(R.id.et1);

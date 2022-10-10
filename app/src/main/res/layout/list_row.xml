@@ -13,7 +13,6 @@
         android:id="@+id/imgLeft"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@color/black"
         />
     <TextView
         android:id="@+id/txtCard"

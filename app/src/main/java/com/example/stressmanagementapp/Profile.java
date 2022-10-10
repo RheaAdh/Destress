@@ -31,12 +31,12 @@ public class Profile extends AppCompatActivity {
         TextView err3 = (TextView) findViewById(R.id.textView5);
         err3.setText("Time : "+time);
 
-        Bundle extras = getIntent().getExtras();
-        byte[] byteArray = extras.getByteArray("image");
-
-        Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-        ImageView image = (ImageView) findViewById(R.id.imageView);
-
-        image.setImageBitmap(bmp);
+//        Bundle extras = getIntent().getExtras();
+//        byte[] byteArray = extras.getByteArray("image");
+//
+//        Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+//        ImageView image = (ImageView) findViewById(R.id.imageView);
+//
+//        image.setImageBitmap(bmp);
     }
 }

@@ -51,11 +51,11 @@ public class CareGiver extends AppCompatActivity {
                 String time = tv4.getText().toString();
                 intent.putExtra("time",time);
 
-                Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.id.imgLeft);
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                byte[] byteArray = stream.toByteArray();
-                intent.putExtra("image", byteArray);
+//                Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.id.imgLeft);
+//                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//                bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//                byte[] byteArray = stream.toByteArray();
+//                intent.putExtra("image", byteArray);
 
 
                 startActivity(intent);

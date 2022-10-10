@@ -10,4 +10,6 @@
     <string name="register">Register</string>
     <string name="username_register">Username</string>
     <string name="are_you_a_caregiver">Are you a caregiver?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

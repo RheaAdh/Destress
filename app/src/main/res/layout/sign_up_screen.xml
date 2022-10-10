@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".SignUp">
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -131,18 +138,54 @@
         app:layout_constraintTop_toBottomOf="@id/tvConfirmPassword"
         app:layout_constraintLeft_toLeftOf="@id/guideline_register"/>
 
+    <TextView
+        android:id="@+id/gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Gender"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/etConfirmPassword"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_register"/>
+
+    <RadioGroup
+        android:id="@+id/radio_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_register"
+        app:layout_constraintTop_toBottomOf="@id/gender">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Male" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Female"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Others"/>
+    </RadioGroup>
+
     <CheckBox
         android:id="@+id/caregiver_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:text="@string/are_you_a_caregiver"
-        app:layout_constraintTop_toBottomOf="@id/etConfirmPassword"
+        app:layout_constraintTop_toBottomOf="@id/radio_gender"
         app:layout_constraintLeft_toLeftOf="@id/guideline_register"/>
 
     <TextView
         android:id="@+id/linkToLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:text="Already have an account? Login."
         android:textColor="#636365"
         android:textSize="18sp"
@@ -155,6 +198,7 @@
         android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
         android:paddingHorizontal="50dp"
         android:text="@string/register"
         android:textColor="@color/black"
@@ -165,3 +209,5 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

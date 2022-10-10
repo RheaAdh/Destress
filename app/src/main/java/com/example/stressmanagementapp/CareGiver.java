@@ -1,15 +1,19 @@
 package com.example.stressmanagementapp;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class CareGiver extends AppCompatActivity {
@@ -38,12 +42,22 @@ public class CareGiver extends AppCompatActivity {
                 TextView tv2 = (TextView)view.findViewById(R.id.txtSteps);
                 String steps = tv2.getText().toString();
                 intent.putExtra("steps",steps);
+
                 TextView tv3 = (TextView)view.findViewById(R.id.txtEmail);
                 String email = tv3.getText().toString();
                 intent.putExtra("email",email);
+
                 TextView tv4 = (TextView)view.findViewById(R.id.txtTime);
                 String time = tv4.getText().toString();
                 intent.putExtra("time",time);
+
+                Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.id.imgLeft);
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] byteArray = stream.toByteArray();
+                intent.putExtra("image", byteArray);
+
+
                 startActivity(intent);
             }
         });

@@ -1,7 +1,11 @@
 package com.example.stressmanagementapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Profile extends AppCompatActivity {
@@ -26,5 +30,13 @@ public class Profile extends AppCompatActivity {
         String time= getIntent().getStringExtra("time");
         TextView err3 = (TextView) findViewById(R.id.textView5);
         err3.setText("Time : "+time);
+
+        Bundle extras = getIntent().getExtras();
+        byte[] byteArray = extras.getByteArray("image");
+
+        Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+        ImageView image = (ImageView) findViewById(R.id.imageView);
+
+        image.setImageBitmap(bmp);
     }
 }

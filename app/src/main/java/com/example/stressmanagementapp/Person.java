@@ -6,13 +6,15 @@ public class Person {
     String time;
     String steps;
     String email;
+    String role;
 
-    public Person(int image, String name, String time, String steps, String email) {
+    public Person(int image, String name, String time, String steps, String email, String role) {
         Image = image;
         Name = name;
         this.time = time;
         this.steps = steps;
         this.email = email;
+        this.role = role;
     }
 
     public int getImage() {
@@ -53,5 +55,13 @@ public class Person {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

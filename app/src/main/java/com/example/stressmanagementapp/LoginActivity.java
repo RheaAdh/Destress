@@ -36,9 +36,9 @@ public class LoginActivity extends AppCompatActivity {
 
             Toast.makeText(LoginActivity.this, username + " has logged in!", Toast.LENGTH_LONG).show();
             //if user loggedin is caregiver then (uncomment)
-            Intent intent = new Intent(LoginActivity.this, CareGiver.class);
+//            Intent intent = new Intent(LoginActivity.this, CareGiver.class);
             //else (that means admin)
-//            Intent intent = new Intent(LoginActivity.this, Admin.class);
+            Intent intent = new Intent(LoginActivity.this, Admin.class);
             intent.putExtra("username", username);
             startActivity(intent);
         });

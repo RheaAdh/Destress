@@ -15,6 +15,6 @@ public class CareGiverFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_care_givers, container, false);
+        return inflater.inflate(R.layout.list_row_admin, container, false);
     }
 }

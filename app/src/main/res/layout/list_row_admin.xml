@@ -10,14 +10,14 @@
         android:padding="20dp"
         >
         <ImageView
-            android:id="@+id/imgLeft"
             android:src="@drawable/boy"
+            android:id="@+id/imgLeft"
             android:layout_width="60dp"
             android:layout_height="60dp"
             />
         <TextView
-            android:id="@+id/txtCard"
-            android:text="XYZ ABCDE"
+            android:text="ABC DEF F"
+            android:id="@+id/txtCard1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/imgLeft"
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add"
-            android:layout_toRightOf="@id/txtCard"
+            android:layout_toRightOf="@id/txtCard1"
             android:layout_marginLeft="30dp"
             android:textSize="10dp"
             />

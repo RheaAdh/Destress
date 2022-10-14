@@ -13,21 +13,28 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class CareGiver extends AppCompatActivity {
+    FirebaseFirestore db ;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.caregiver);
 
+        db=FirebaseFirestore.getInstance();
+
+
+
         ListView listView=findViewById(R.id.listView);
         ArrayList<Person> personArrayList = new ArrayList<>();
-        personArrayList.add(new Person(R.drawable.girl,"Rhea Adhikari","200","5000","rheadhikari@gmail.com","caregiver"));
-        personArrayList.add(new Person(R.drawable.boy,"Pranshul Goyal","300","7000","pranshul@gmail.com","caregiver"));
-        personArrayList.add(new Person(R.drawable.girl,"Juhi Mehta","100","9000","juhi@gmail.com","caregiver"));
-        personArrayList.add(new Person(R.drawable.girl,"ABC","100","9000","abc@gmail.com","patient"));
+//        personArrayList.add(new Person(R.drawable.girl,"Rhea Adhikari","200","5000","rheadhikari@gmail.com","caregiver"));
+//        personArrayList.add(new Person(R.drawable.boy,"Pranshul Goyal","300","7000","pranshul@gmail.com","caregiver"));
+//        personArrayList.add(new Person(R.drawable.girl,"Juhi Mehta","100","9000","juhi@gmail.com","caregiver"));
+//        personArrayList.add(new Person(R.drawable.girl,"ABC","100","9000","abc@gmail.com","patient"));
 
 
 

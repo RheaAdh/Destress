@@ -7,14 +7,18 @@ public class Person {
     String steps;
     String email;
     String role;
+    String password;
+    String gender;
 
-    public Person(int image, String name, String time, String steps, String email, String role) {
+    public Person(int image, String name, String time, String steps, String email, String role, String password, String gender) {
         Image = image;
         Name = name;
         this.time = time;
         this.steps = steps;
         this.email = email;
         this.role = role;
+        this.password = password;
+        this.gender = gender;
     }
 
     public int getImage() {
@@ -63,5 +67,21 @@ public class Person {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

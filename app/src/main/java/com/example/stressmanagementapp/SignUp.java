@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,8 +57,15 @@ public class SignUp extends AppCompatActivity {
                     Toast.makeText(SignUp.this, "Password and confirm password dont match", Toast.LENGTH_LONG).show();
                 }
                 else{
-                    //Person p = new Person(R.drawable.girl,etName.getText().toString(),"0","0",etEmail.getText().toString(),caregiverCheck.getText().toString(),etPassword.getText().toString(),radioGender.toString());
-                    Person p = new Person(R.drawable.girl,"Rhea","0","0","rhea@gmail.com","admin","1234","Female");
+                    final String gender =
+                            ((RadioButton)findViewById(radioGender.getCheckedRadioButtonId()))
+                                    .getText().toString();
+                    String role="patient";
+                    if(caregiverCheck.isChecked()){
+                        role="caregiver";
+                    }
+                    Person p = new Person(R.drawable.girl,etName.getText().toString(),etEmail.getText().toString(),role,etPassword.getText().toString(),gender);
+//                    Person p = new Person(R.drawable.girl,etName.getText().toString(),"0","0","rhea@gmail.com","admin","1234","Female");
                     db.collection("persons")
                             .add(p)
                             .addOnSuccessListener(r->{

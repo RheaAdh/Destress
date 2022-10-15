@@ -12,11 +12,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 
 public class PersonAdapter extends ArrayAdapter<Person> {
     private Context mContext;
     private int mResource;
+    FirebaseFirestore db ;
+
 
     public PersonAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Person> objects) {
         super(context, resource, objects);
@@ -27,21 +35,30 @@ public class PersonAdapter extends ArrayAdapter<Person> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+
+        Log.d("SUP", "getView: sup");
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
         convertView = layoutInflater.inflate(mResource,parent,false);
 
         ImageView imageView = convertView.findViewById(R.id.imgLeft);
         TextView txtName = convertView.findViewById(R.id.txtCard);
-        TextView txtSteps = convertView.findViewById(R.id.txtSteps);
-        TextView txtTime = convertView.findViewById(R.id.txtTime);
         TextView txtEmail = convertView.findViewById(R.id.txtEmail);
 
         imageView.setImageResource(getItem(position).getImage());
         txtName.setText(getItem(position).getName());
-        txtSteps.setText(getItem(position).getSteps());
-        txtTime.setText(getItem(position).getTime());
         txtEmail.setText(getItem(position).getEmail());
 
+
+
         return convertView;
+    }
+
+    @Override
+    public int getCount()
+    {
+        Task<QuerySnapshot> task = db.collection("persons")
+                .whereEqualTo("role","patient")
+                .get();
+        return task.getResult().size();
     }
 }

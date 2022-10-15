@@ -2,19 +2,19 @@ package com.example.stressmanagementapp;
 
 public class Person {
     int Image;
-    String Name;
-    String time;
-    String steps;
+    String name;
     String email;
     String role;
     String password;
     String gender;
 
-    public Person(int image, String name, String time, String steps, String email, String role, String password, String gender) {
+    public Person(){
+
+    }
+
+    public Person(int image, String name, String email, String role, String password, String gender) {
         Image = image;
-        Name = name;
-        this.time = time;
-        this.steps = steps;
+        this.name = name;
         this.email = email;
         this.role = role;
         this.password = password;
@@ -30,27 +30,11 @@ public class Person {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getSteps() {
-        return steps;
-    }
-
-    public void setSteps(String steps) {
-        this.steps = steps;
+        this.name = name;
     }
 
     public String getEmail() {
@@ -83,5 +67,17 @@ public class Person {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "Image=" + Image +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", role='" + role + '\'' +
+                ", password='" + password + '\'' +
+                ", gender='" + gender + '\'' +
+                '}';
     }
 }

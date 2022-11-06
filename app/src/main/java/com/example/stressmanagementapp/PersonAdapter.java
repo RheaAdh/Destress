@@ -30,6 +30,7 @@ public class PersonAdapter extends ArrayAdapter<Person> {
         super(context, resource, objects);
         this.mContext = context;
         this.mResource = resource;
+        db = FirebaseFirestore.getInstance();
     }
 
     @NonNull
@@ -46,7 +47,7 @@ public class PersonAdapter extends ArrayAdapter<Person> {
 
         imageView.setImageResource(getItem(position).getImage());
         txtName.setText(getItem(position).getName());
-        txtEmail.setText(getItem(position).getEmail());
+        //txtEmail.setText(getItem(position).getEmail());
 
 
 
@@ -56,9 +57,6 @@ public class PersonAdapter extends ArrayAdapter<Person> {
     @Override
     public int getCount()
     {
-        Task<QuerySnapshot> task = db.collection("persons")
-                .whereEqualTo("role","patient")
-                .get();
-        return task.getResult().size();
+         return 4;
     }
 }

@@ -8,12 +8,15 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-public class Home extends AppCompatActivity {
+import com.google.firebase.auth.FirebaseAuth;
 
+public class Home extends AppCompatActivity {
+    FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+        mAuth = FirebaseAuth.getInstance();
     }
 
     @Override
@@ -26,12 +29,11 @@ public class Home extends AppCompatActivity {
     public void nextPage(){
         Intent intent = new Intent(Home.this,Profile.class);
         startActivity(intent);
-        return;
     }
     public void logout(){
+        mAuth.signOut();
         Intent intent = new Intent(Home.this,LoginActivity.class);
         startActivity(intent);
-        return;
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

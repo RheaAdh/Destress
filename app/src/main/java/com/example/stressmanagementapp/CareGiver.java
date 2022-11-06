@@ -34,45 +34,46 @@ public class CareGiver extends AppCompatActivity {
         ListView listView=findViewById(R.id.listView);
 
         ArrayList<Person> personArrayList = new ArrayList<>();
+        Log.d("Care giver", "hello ");
+//
+    // db = FirebaseFirestore.getInstance();
+//
+//        db.collection("persons")
+//                .whereEqualTo("role","patient")
+//                .get()
+//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                                           @Override
+//                                           public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                                               if(task.isSuccessful()){
+//                                                   Log.d("SUCCESSFUL RETRIEVE","");
+//
+//                                                   for(QueryDocumentSnapshot document : task.getResult()){
+//                                                       Person p = document.toObject(Person.class);
+//                                                       Person newp = new Person();
+//                                                       newp.setName(p.getName());
+//                                                       newp.setEmail(p.getEmail());
+//                                                       newp.setGender(p.getGender());
+//                                                       newp.setRole(p.getRole());
+//                                                       newp.setImage(p.getImage());
+//                                                       newp.setPassword(p.getPassword());
+//                                                       for(Person x:personArrayList){
+//                                                           Log.d("XXXXX",x.toString());
+//                                                       }
+//                                                       personArrayList.add(newp);
+//                                                   }
+//                                               }
+//                                               else{
+//                                                   Log.w("TAG","Error",task.getException());
+//                                               }
+//                                           }
+//                                       });
 
-        db=FirebaseFirestore.getInstance();
-
-        db.collection("persons")
-                .whereEqualTo("role","patient")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                           @Override
-                                           public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                               if(task.isSuccessful()){
-                                                   Log.d("SUCCESSFUL RETRIEVE","");
-
-                                                   for(QueryDocumentSnapshot document : task.getResult()){
-                                                       Person p = document.toObject(Person.class);
-                                                       Person newp = new Person();
-                                                       newp.setName(p.getName());
-                                                       newp.setEmail(p.getEmail());
-                                                       newp.setGender(p.getGender());
-                                                       newp.setRole(p.getRole());
-                                                       newp.setImage(p.getImage());
-                                                       newp.setPassword(p.getPassword());
-                                                       for(Person x:personArrayList){
-                                                           Log.d("XXXXX",x.toString());
-                                                       }
-                                                       personArrayList.add(newp);
-                                                   }
-                                               }
-                                               else{
-                                                   Log.w("TAG","Error",task.getException());
-                                               }
-                                           }
-                                       });
 
 
-
-//        personArrayList.add(new Person(R.drawable.girl,"Rhea Adhikari","200","5000","rheadhikari@gmail.com","caregiver"));
-//        personArrayList.add(new Person(R.drawable.boy,"Pranshul Goyal","300","7000","pranshul@gmail.com","caregiver"));
-//        personArrayList.add(new Person(R.drawable.girl,"Juhi Mehta","100","9000","juhi@gmail.com","caregiver"));
-//        personArrayList.add(new Person(R.drawable.girl,"ABC","100","9000","abc@gmail.com","patient"));
+        personArrayList.add(new Person(R.drawable.girl,"Rhea Adhikari","200","5000","rheadhikari@gmail.com","caregiver"));
+        personArrayList.add(new Person(R.drawable.boy,"Pranshul Goyal","300","7000","pranshul@gmail.com","caregiver"));
+        personArrayList.add(new Person(R.drawable.girl,"Juhi Mehta","100","9000","juhi@gmail.com","caregiver"));
+        personArrayList.add(new Person(R.drawable.girl,"ABC","100","9000","abc@gmail.com","patient"));
 
         PersonAdapter personAdapter = new PersonAdapter(this,R.layout.list_row,personArrayList);
         listView.setAdapter(personAdapter);
@@ -80,15 +81,15 @@ public class CareGiver extends AppCompatActivity {
 
         listView.setOnItemClickListener((adapterView, view, i, l) -> {
             Intent intent = new Intent(CareGiver.this, Profile.class);
-            TextView tv = view.findViewById(R.id.txtCard);
+            //TextView tv = view.findViewById(R.id.txtCard);
 
-            String name = tv.getText().toString();
+            String name = "test";
             intent.putExtra("name",name);
 
 
 
-            TextView tv3 = view.findViewById(R.id.txtEmail);
-            String email = tv3.getText().toString();
+         //   TextView tv3 = view.findViewById(R.id.txtEmail);
+            String email = "email";
             intent.putExtra("email",email);
 
 

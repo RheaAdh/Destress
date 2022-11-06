@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "162633640988",
-    "project_id": "stress-management-app-ddd21",
-    "storage_bucket": "stress-management-app-ddd21.appspot.com"
+    "project_number": "585949922097",
+    "project_id": "stress-management-app-e46e3",
+    "storage_bucket": "stress-management-app-e46e3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:162633640988:android:87ba8c8c4ef8bfd52d03d9",
+        "mobilesdk_app_id": "1:585949922097:android:18ccec37dda6ee9f2d6610",
         "android_client_info": {
           "package_name": "com.example.stressmanagementapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "162633640988-t50p1ur5sl27lqi5bjrcls1fck71sugv.apps.googleusercontent.com",
+          "client_id": "585949922097-ejv3nqnrk1jngt66qor8rnmi3alj92hd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBI-KxLYCKV_cOfOE_3nZgZpG2fhvc-2Mw"
+          "current_key": "AIzaSyDrW_9NXWQQXcn6Zs8A_yxIQHc8FHa_R5Q"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "162633640988-t50p1ur5sl27lqi5bjrcls1fck71sugv.apps.googleusercontent.com",
+              "client_id": "585949922097-ejv3nqnrk1jngt66qor8rnmi3alj92hd.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

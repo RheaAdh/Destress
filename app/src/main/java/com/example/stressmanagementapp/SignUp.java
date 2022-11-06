@@ -15,17 +15,18 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SignUp extends AppCompatActivity {
 
     FirebaseFirestore db ;
-
+    FirebaseAuth mAuth;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up_screen);
-
+        mAuth = FirebaseAuth.getInstance();
         db= FirebaseFirestore.getInstance();
 
         TextView tv2 = findViewById(R.id.linkToLogin);
@@ -40,20 +41,24 @@ public class SignUp extends AppCompatActivity {
 
 
         EditText etName = findViewById(R.id.etName);
-        String name =etName.getText().toString();
-        Log.d("yolo",name);
+
         EditText etEmail = findViewById(R.id.etEmail);
         EditText etConfirmPassword = findViewById(R.id.etConfirmPassword);
         EditText etPassword = findViewById(R.id.etPassword);
-        RadioGroup radioGender = findViewById(R.id.radio_gender);
-        CheckBox caregiverCheck = findViewById(R.id.caregiver_checkbox);
+
+
 
         Button btnRegister = findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(SignUp.this, "heree", Toast.LENGTH_LONG).show();
-                if(!(etPassword.getText().toString().equals(etConfirmPassword.getText().toString()))){
+                String email = etEmail.getText().toString();
+                String name =etName.getText().toString();
+                String password = etPassword.getText().toString();
+                String confirmPassword = etConfirmPassword.getText().toString();
+                RadioGroup radioGender = findViewById(R.id.radio_gender);
+                CheckBox caregiverCheck = findViewById(R.id.caregiver_checkbox);
+                if(!(password.equals(confirmPassword))){
                     Toast.makeText(SignUp.this, "Password and confirm password dont match", Toast.LENGTH_LONG).show();
                 }
                 else{
@@ -64,20 +69,29 @@ public class SignUp extends AppCompatActivity {
                     if(caregiverCheck.isChecked()){
                         role="caregiver";
                     }
-                    Person p = new Person(R.drawable.girl,etName.getText().toString(),etEmail.getText().toString(),role,etPassword.getText().toString(),gender);
-//                    Person p = new Person(R.drawable.girl,etName.getText().toString(),"0","0","rhea@gmail.com","admin","1234","Female");
-                    db.collection("persons")
-                            .add(p)
-                            .addOnSuccessListener(r->{
-                                Log.d("here","");
-                                Toast.makeText(SignUp.this, "User registered successfully", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(SignUp.this, LoginActivity.class);
-                                startActivity(intent);
-                            })
-                            .addOnFailureListener(r->{
-                                Log.d("ERROR", r.toString());
-                                Toast.makeText(SignUp.this, "User couldnt be registered", Toast.LENGTH_LONG).show();
-                            });
+                    Person p = new Person(R.drawable.girl,name,email,role,password,gender);
+                    Log.d("Username password", email + password);
+                    mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener((result)->{
+                       if(result.isSuccessful()){
+                           db.collection("persons")
+                                   .add(p)
+                                   .addOnSuccessListener(r->{
+                                       Toast.makeText(SignUp.this, "User registered successfully", Toast.LENGTH_LONG).show();
+                                       Intent intent = new Intent(SignUp.this, LoginActivity.class);
+                                       startActivity(intent);
+                                   })
+                                   .addOnFailureListener(r->{
+                                       Log.d("ERROR", r.toString());
+                                       Toast.makeText(SignUp.this, "User couldn't be registered", Toast.LENGTH_LONG).show();
+                                   });
+                       }else{
+                           Log.d("ERROR", "Firebase authentication error creating new user");
+                           Toast.makeText(SignUp.this, "User couldn't be registered", Toast.LENGTH_LONG).show();
+
+                       }
+                    });
+
+
 
 
                 }

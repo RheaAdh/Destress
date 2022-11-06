@@ -5,7 +5,7 @@ public class Person {
     String name;
     String email;
     String role;
-    String password;
+    private String password;
     String gender;
 
     public Person(){

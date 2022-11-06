@@ -19,19 +19,19 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
 
-        String name= getIntent().getStringExtra("name");
+        String name= "Pranshul";
         TextView err = (TextView) findViewById(R.id.textView);
         err.setText("Name : " + name);
 
-        String email= getIntent().getStringExtra("email");
+        String email= "pranshul20162002@gmail.com";
         TextView err1 = (TextView) findViewById(R.id.textView2);
         err1.setText("Email ID : "+email);
 
-        String steps= getIntent().getStringExtra("steps");
+        String steps= "2000";
         TextView err2 = (TextView) findViewById(R.id.textView4);
         err2.setText("Steps : "+steps);
 
-        String time= getIntent().getStringExtra("time");
+        String time= "12 minutes";
         TextView err3 = (TextView) findViewById(R.id.textView5);
         err3.setText("Time : "+time);
 

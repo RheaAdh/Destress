@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 public class PatientDbAdapter {
     FirebaseUser mAuth;
     private static String dbName="PatientDb";
-    private static int dbVersion=1;
+    private static int dbVersion=2;
 
     private static PatientDbHelper helper;
     private SQLiteDatabase patientDb;
@@ -36,11 +37,12 @@ public class PatientDbAdapter {
     }
 
     public void InsertRecord(String email,String stepCount,String meditateTime,String dateTime){
-        ContentValues contentValues=new ContentValues();
+        ContentValues contentValues = new ContentValues();
         contentValues.put("email",email);
         contentValues.put("dateTime",dateTime);
         contentValues.put("meditateTime",meditateTime);
         contentValues.put("stepCount",stepCount);
+        Log.d("Im here","");
         patientDb.insert("patient",null,contentValues);
     }
 
@@ -70,12 +72,13 @@ public class PatientDbAdapter {
         @Override
         public void onCreate(SQLiteDatabase sqLiteDatabase) {
             sqLiteDatabase.execSQL("CREATE TABLE patient " +
-                    "(id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,email TEXT,dateTime Date,meditateTime TEXT)");
+                    "(id INTEGER PRIMARY KEY AUTOINCREMENT,email TEXT,dateTime TEXT,meditateTime TEXT,stepCount TEXT)");
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+            sqLiteDatabase.execSQL("CREATE TABLE patient " +
+                    "(id INTEGER PRIMARY KEY AUTOINCREMENT,email TEXT,dateTime TEXT,meditateTime TEXT,stepCount TEXT)");
         }
     }
 }

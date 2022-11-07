@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.stressmanagementapp.R;
 import com.example.stressmanagementapp.helpers.PatientDbAdapter;
@@ -34,6 +36,9 @@ public class Home extends AppCompatActivity {
 
             patientDbAdapter.InsertRecord(mAuth.getCurrentUser().getEmail(),stepCount.toString(),
                     meditateTime.toString(),dateTime.toString());
+            Log.d(mAuth.getCurrentUser().getEmail()+stepCount.toString()+
+                    meditateTime.toString(),dateTime.toString());
+            Toast.makeText(Home.this, "Details", Toast.LENGTH_LONG).show();
         });
     }
 

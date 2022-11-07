@@ -4,20 +4,32 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.stressmanagementapp.R;
+import com.example.stressmanagementapp.helpers.PatientDbAdapter;
+import com.example.stressmanagementapp.models.PatientRecord;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.ArrayList;
 
 public class Profile extends AppCompatActivity {
     FirebaseUser mAuth;
+    PatientDbAdapter patientDbAdapter;
+    ArrayList<PatientRecord>arrayList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
+
+
+        arrayList=patientDbAdapter.getPatientRecords();
+        //show array list in row form on profile page
+
 
         String name= "Rhea";
         TextView err = (TextView) findViewById(R.id.textView);

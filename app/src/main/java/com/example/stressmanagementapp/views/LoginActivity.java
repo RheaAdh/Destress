@@ -102,27 +102,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            CollectionReference persons = db.collection("persons");
-            Query query = persons.whereEqualTo("email", currentUser.getEmail());
-            query.get().addOnCompleteListener((u) -> {
-                if (u.isSuccessful()) {
-                    for (QueryDocumentSnapshot snapshot : u.getResult()) {
-                        if (Objects.equals((String) snapshot.getData().get("role"), "patient")) {
-                            Toast.makeText(LoginActivity.this, (String) snapshot.getData().get("name") + " has logged in!", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(LoginActivity.this, Home.class);
-                            intent.putExtra("username", (String) snapshot.getData().get("name"));
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(LoginActivity.this, (String) snapshot.getData().get("name") + " has logged in!", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(LoginActivity.this, CareGiver.class);
-                            intent.putExtra("username", (String) snapshot.getData().get("name"));
-                            startActivity(intent);
-                        }
-                    }
-                }
-            });
-        }
+        mAuth.signOut();
     }
 }

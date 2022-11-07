@@ -18,8 +18,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Home extends AppCompatActivity {
     FirebaseAuth mAuth;
-
     PatientDbAdapter patientDbAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,9 +36,8 @@ public class Home extends AppCompatActivity {
 
             patientDbAdapter.InsertRecord(mAuth.getCurrentUser().getEmail(),stepCount.toString(),
                     meditateTime.toString(),dateTime.toString());
-            Log.d(mAuth.getCurrentUser().getEmail()+stepCount.toString()+
-                    meditateTime.toString(),dateTime.toString());
-            Toast.makeText(Home.this, "Details", Toast.LENGTH_LONG).show();
+//            Log.d(mAuth.getCurrentUser().getEmail(),"");
+//            Toast.makeText(Home.this, "Details", Toast.LENGTH_LONG).show();
         });
     }
 

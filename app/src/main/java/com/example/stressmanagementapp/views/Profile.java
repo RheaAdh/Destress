@@ -13,12 +13,13 @@ import android.widget.TextView;
 import com.example.stressmanagementapp.R;
 import com.example.stressmanagementapp.helpers.PatientDbAdapter;
 import com.example.stressmanagementapp.models.PatientRecord;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
 public class Profile extends AppCompatActivity {
-    FirebaseUser mAuth;
+    FirebaseAuth mAuth;
     PatientDbAdapter patientDbAdapter;
     ArrayList<PatientRecord>arrayList;
     @Override
@@ -27,7 +28,7 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.profile);
 
 
-        arrayList=patientDbAdapter.getPatientRecords();
+//        arrayList=patientDbAdapter.getPatientRecords();
         //show array list in row form on profile page
 
 
@@ -77,11 +78,10 @@ public class Profile extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 // Handle item selection
         switch (item.getItemId()) {
-            case R.id.home:
+            case R.id.list1:
                 nextPage();
                 return true;
-            case R.id.signout:
-
+            case R.id.signout1:
                 logout();
                 return true;
             default:

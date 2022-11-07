@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class PatientDbAdapter {
     FirebaseUser mAuth;
     private static String dbName="PatientDb";
-    private static int dbVersion=2;
+    private static int dbVersion=1;
 
     private static PatientDbHelper helper;
     private SQLiteDatabase patientDb;
@@ -47,22 +47,28 @@ public class PatientDbAdapter {
     }
 
     public ArrayList<PatientRecord> getPatientRecords(){
+        Cursor cursorRecords = patientDb.rawQuery("SELECT * FROM " + "patient"+" WHERE "+"email"+" = "+ mAuth.getEmail(), null);
         ArrayList<PatientRecord>arrayList= new ArrayList<>();
         String email=mAuth.getEmail();
-        String stepCount ="";
-        String dateTime ="";
-        String meditateTime ="";
-        Cursor cursor = patientDb.query("patient",null,email,null,null,null,null);
-        while(cursor.moveToNext()){
 
-            stepCount = cursor.getString(cursor.getColumnIndexOrThrow("stepCount"));
-            dateTime = cursor.getString(cursor.getColumnIndexOrThrow("dateTime"));
-            meditateTime = cursor.getString(cursor.getColumnIndexOrThrow("meditateTime"));
-            PatientRecord patientRecord = new PatientRecord(meditateTime,stepCount,email,dateTime);
-            arrayList.add(patientRecord);
+        Cursor cursor = patientDb.query("patient",null,email,null,null,null,null);
+
+        if (cursorRecords.moveToFirst()) {
+            do {
+                // on below line we are adding the data from cursor to our array list.
+                arrayList.add(new PatientRecord(cursorRecords.getString(1),
+                        cursorRecords.getString(2),
+                        cursorRecords.getString(3),
+                        cursorRecords.getString(4)));
+            } while (cursorRecords.moveToNext());
+            // moving our cursor to next.
         }
+        // at last closing our cursor
+        // and returning our array list.
+        cursorRecords.close();
         return arrayList;
     }
+
     private static class PatientDbHelper extends SQLiteOpenHelper {
 
         public PatientDbHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
@@ -77,7 +83,8 @@ public class PatientDbAdapter {
 
         @Override
         public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-            sqLiteDatabase.execSQL("CREATE TABLE patient " +
+            sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + "patient");
+            sqLiteDatabase.execSQL("CREATE TABLE "+"patient" +
                     "(id INTEGER PRIMARY KEY AUTOINCREMENT,email TEXT,dateTime TEXT,meditateTime TEXT,stepCount TEXT)");
         }
     }

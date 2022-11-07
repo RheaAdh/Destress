@@ -3,6 +3,7 @@ package com.example.stressmanagementapp.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
@@ -11,12 +12,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.stressmanagementapp.helpers.PersonAdapter;
 import com.example.stressmanagementapp.R;
 import com.example.stressmanagementapp.models.Person;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
 public class CareGiver extends AppCompatActivity {
     FirebaseFirestore db ;
+    FirebaseAuth mAuth;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,4 +104,30 @@ public class CareGiver extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
     }
+    public void nextPage(){
+        Intent intent = new Intent(CareGiver.this, Home.class);
+        startActivity(intent);
+        return;
+    }
+    public void logout(){
+        Intent intent = new Intent(CareGiver.this, LoginActivity.class);
+        startActivity(intent);
+        mAuth.signOut();
+        return;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+// Handle item selection
+        switch (item.getItemId()) {
+            case R.id.list1:
+                nextPage();
+                return true;
+            case R.id.signout1:
+                logout();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }

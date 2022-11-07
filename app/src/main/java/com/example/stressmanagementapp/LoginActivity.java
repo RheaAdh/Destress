@@ -24,6 +24,7 @@ import java.util.Objects;
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,47 +48,48 @@ public class LoginActivity extends AppCompatActivity {
             String username = etName.getText().toString();
             String password = etPass.getText().toString();
             FirebaseUser currentUser = mAuth.getCurrentUser();
-            if(currentUser != null){
+            if (currentUser != null) {
                 CollectionReference persons = db.collection("persons");
                 Query query = persons.whereEqualTo("email", currentUser.getEmail());
                 query.get().addOnCompleteListener((u) -> {
-                    if(u.isSuccessful()){
-                        for(QueryDocumentSnapshot snapshot : u.getResult()){
-                            if(Objects.equals((String) snapshot.getData().get("role"), "patient")){
+                    if (u.isSuccessful()) {
+                        for (QueryDocumentSnapshot snapshot : u.getResult()) {
+                            if (Objects.equals((String) snapshot.getData().get("role"), "patient")) {
                                 Toast.makeText(LoginActivity.this, (String) snapshot.getData().get("name") + " has logged in!", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(LoginActivity.this, Home.class);
-                                intent.putExtra("username",(String) snapshot.getData().get("name") );
+                                intent.putExtra("username", (String) snapshot.getData().get("name"));
                                 startActivity(intent);
-                            }else{
+                            } else {
                                 Toast.makeText(LoginActivity.this, (String) snapshot.getData().get("name") + " has logged in!", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(LoginActivity.this, CareGiver.class);
-                                intent.putExtra("username",(String) snapshot.getData().get("name") );
+                                intent.putExtra("username", (String) snapshot.getData().get("name"));
                                 startActivity(intent);
                             }
                         }
                     }
                 });
-            }else{
-                mAuth.signInWithEmailAndPassword(username, password).addOnCompleteListener((result)->{
-                    if(result.isSuccessful()){
+            } else {
+                mAuth.signInWithEmailAndPassword(username, password).addOnCompleteListener((result) -> {
+                    if (result.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
-                        if(user != null){
+
+                        if (user != null) {
                             CollectionReference persons = db.collection("persons");
                             Query query = persons.whereEqualTo("email", username);
                             query.get().addOnCompleteListener((u) -> {
-                                if(u.isSuccessful()){
-                                    for(QueryDocumentSnapshot snapshot : u.getResult()){
-                                       if(Objects.equals((String) snapshot.getData().get("role"), "patient")){
-                                           Toast.makeText(LoginActivity.this, (String) snapshot.getData().get("name") + " has logged in!", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(LoginActivity.this, Home.class);
-                            intent.putExtra("username",(String) snapshot.getData().get("name") );
-                            startActivity(intent);
-                                       }else{
-                                           Toast.makeText(LoginActivity.this, (String) snapshot.getData().get("name") + " has logged in!", Toast.LENGTH_LONG).show();
-                                           Intent intent = new Intent(LoginActivity.this, CareGiver.class);
-                                           intent.putExtra("username",(String) snapshot.getData().get("name") );
-                                           startActivity(intent);
-                                       }
+                                if (u.isSuccessful()) {
+                                    for (QueryDocumentSnapshot snapshot : u.getResult()) {
+                                        if (Objects.equals((String) snapshot.getData().get("role"), "patient")) {
+                                            Toast.makeText(LoginActivity.this, (String) snapshot.getData().get("name") + " has logged in!", Toast.LENGTH_LONG).show();
+                                            Intent intent = new Intent(LoginActivity.this, Home.class);
+                                            intent.putExtra("username", (String) snapshot.getData().get("name"));
+                                            startActivity(intent);
+                                        } else {
+                                            Toast.makeText(LoginActivity.this, (String) snapshot.getData().get("name") + " has logged in!", Toast.LENGTH_LONG).show();
+                                            Intent intent = new Intent(LoginActivity.this, CareGiver.class);
+                                            intent.putExtra("username", (String) snapshot.getData().get("name"));
+                                            startActivity(intent);
+                                        }
                                     }
                                 }
                             });
@@ -102,21 +104,21 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
+        if (currentUser != null) {
             CollectionReference persons = db.collection("persons");
             Query query = persons.whereEqualTo("email", currentUser.getEmail());
             query.get().addOnCompleteListener((u) -> {
-                if(u.isSuccessful()){
-                    for(QueryDocumentSnapshot snapshot : u.getResult()){
-                        if(Objects.equals((String) snapshot.getData().get("role"), "patient")){
+                if (u.isSuccessful()) {
+                    for (QueryDocumentSnapshot snapshot : u.getResult()) {
+                        if (Objects.equals((String) snapshot.getData().get("role"), "patient")) {
                             Toast.makeText(LoginActivity.this, (String) snapshot.getData().get("name") + " has logged in!", Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(LoginActivity.this, Home.class);
-                            intent.putExtra("username",(String) snapshot.getData().get("name") );
+                            intent.putExtra("username", (String) snapshot.getData().get("name"));
                             startActivity(intent);
-                        }else{
+                        } else {
                             Toast.makeText(LoginActivity.this, (String) snapshot.getData().get("name") + " has logged in!", Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(LoginActivity.this, CareGiver.class);
-                            intent.putExtra("username",(String) snapshot.getData().get("name") );
+                            intent.putExtra("username", (String) snapshot.getData().get("name"));
                             startActivity(intent);
                         }
                     }

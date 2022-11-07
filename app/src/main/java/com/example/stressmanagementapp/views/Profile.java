@@ -10,9 +10,10 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.stressmanagementapp.R;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Profile extends AppCompatActivity {
-
+    FirebaseUser mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +69,7 @@ public class Profile extends AppCompatActivity {
                 nextPage();
                 return true;
             case R.id.signout:
+
                 logout();
                 return true;
             default:

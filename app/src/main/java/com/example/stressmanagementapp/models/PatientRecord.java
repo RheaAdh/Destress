@@ -3,28 +3,28 @@ package com.example.stressmanagementapp.models;
 import java.util.Date;
 
 public class PatientRecord {
-    String meditationLength;
+    String meditateTime;
     String stepCount;
-    Person p;
-    Date dateTime;
+    String email;
+    String dateTime;
 
     public PatientRecord(){
 
     }
 
-    public PatientRecord(String meditationLength, String stepCount, Person p, Date dateTime) {
-        this.meditationLength = meditationLength;
+    public PatientRecord(String meditateTime, String stepCount, String email, String dateTime) {
+        this.meditateTime = meditateTime;
         this.stepCount = stepCount;
-        this.p = p;
+        this.email = email;
         this.dateTime = dateTime;
     }
 
-    public String getMeditationLength() {
-        return meditationLength;
+    public String getMeditateTime() {
+        return meditateTime;
     }
 
-    public void setMeditationLength(String meditationLength) {
-        this.meditationLength = meditationLength;
+    public void setMeditateTime(String meditateTime) {
+        this.meditateTime = meditateTime;
     }
 
     public String getStepCount() {
@@ -35,19 +35,19 @@ public class PatientRecord {
         this.stepCount = stepCount;
     }
 
-    public Person getP() {
-        return p;
+    public String getEmail() {
+        return email;
     }
 
-    public void setP(Person p) {
-        this.p = p;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Date getDateTime() {
+    public String getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(Date dateTime) {
+    public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
     }
 }

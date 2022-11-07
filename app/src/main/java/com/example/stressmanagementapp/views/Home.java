@@ -7,17 +7,34 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.stressmanagementapp.R;
+import com.example.stressmanagementapp.helpers.PatientDbAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Home extends AppCompatActivity {
     FirebaseAuth mAuth;
+
+    PatientDbAdapter patientDbAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
         mAuth = FirebaseAuth.getInstance();
+        TextView tv = (TextView) findViewById(R.id.profileName);
+        tv.setText(mAuth.getCurrentUser().getEmail());
+        TextView dateTime = (TextView) findViewById(R.id.dateTime);
+        TextView stepCount = (TextView) findViewById(R.id.steps);
+        TextView meditateTime = (TextView) findViewById(R.id.meditateTime);
+        Button submitButton = (Button) findViewById(R.id.btnSubmit);
+        patientDbAdapter = new PatientDbAdapter(this);
+        submitButton.setOnClickListener(view->{
+
+            patientDbAdapter.InsertRecord(mAuth.getCurrentUser().getEmail(),stepCount.toString(),
+                    meditateTime.toString(),dateTime.toString());
+        });
     }
 
     @Override

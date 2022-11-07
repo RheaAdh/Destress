@@ -12,24 +12,6 @@
     android:layout_height="match_parent"
     tools:context=".views.Profile">
 
-<LinearLayout
-    android:orientation="horizontal"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/dateTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/stepCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/meditateTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-</LinearLayout>
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"

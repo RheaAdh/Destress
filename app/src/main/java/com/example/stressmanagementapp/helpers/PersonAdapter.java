@@ -41,7 +41,7 @@ public class PersonAdapter extends ArrayAdapter<Person> {
 
         ImageView imageView = convertView.findViewById(R.id.imgLeft);
         TextView txtName = convertView.findViewById(R.id.txtCard);
-        TextView txtEmail = convertView.findViewById(R.id.txtEmail);
+//        TextView txtEmail = convertView.findViewById(R.id.txtEmail);
 
         imageView.setImageResource(getItem(position).getImage());
         txtName.setText(getItem(position).getName());

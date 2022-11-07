@@ -1,27 +1,18 @@
-package com.example.stressmanagementapp;
+package com.example.stressmanagementapp.views;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.example.stressmanagementapp.helpers.PersonAdapter;
+import com.example.stressmanagementapp.R;
+import com.example.stressmanagementapp.models.Person;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class CareGiver extends AppCompatActivity {

@@ -1,12 +1,10 @@
-package com.example.stressmanagementapp;
+package com.example.stressmanagementapp.views;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,44 +12,42 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.stressmanagementapp.R;
+import com.example.stressmanagementapp.helpers.PersonAdapter;
+import com.example.stressmanagementapp.models.Person;
+
 import java.util.ArrayList;
 
-public class CareGiverFragment extends Fragment {
+public class PatientFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View root;
-        root = inflater.inflate(R.layout.fragment_care_givers, container, false);
-
-        ListView listViewCaregivers = root.findViewById(R.id.listViewCaregivers);
-
+        root = inflater.inflate(R.layout.fragment_patients, container, false);
 
         ArrayList<Person> personArrayList = new ArrayList<>();
-//        personArrayList.add(new Person(R.drawable.girl,"Rhea Adhikari","200","5000","rheadhikari@gmail.com","caregiver"));
-//        personArrayList.add(new Person(R.drawable.boy,"Pranshul Goyal","300","7000","pranshul@gmail.com","caregiver"));
-//        personArrayList.add(new Person(R.drawable.girl,"Juhi Mehta","100","9000","juhi@gmail.com","caregiver"));
-//        personArrayList.add(new Person(R.drawable.girl,"ABC","100","9000","abc@gmail.com","patient"));
+        personArrayList.add(new Person(R.drawable.girl,"Rhea Adhikari","rheadhikari@gmail.com","caregiver","rhea","female"));
+        personArrayList.add(new Person(R.drawable.boy,"Pranshul Goyal","pranshul@gmail.com","caregiver","rhea","male"));
+        personArrayList.add(new Person(R.drawable.girl,"Juhi Mehta","juhi@gmail.com","caregiver","juhi","female"));
+        personArrayList.add(new Person(R.drawable.girl,"ABC","abc@gmail.com","patient","abc","female"));
 
-        ArrayList<Person> caregiversArrayList = new ArrayList<>();
+        ArrayList<Person> patientArrayList = new ArrayList<>();
 
         for(int i=0;i<personArrayList.size();i++){
-            if(personArrayList.get(i).role == "caregiver" ) {
-                caregiversArrayList.add(personArrayList.get(i));
-//                Log.d("person i",caregiversArrayList.get(i).getName());
-            }
+            if(personArrayList.get(i).role == "patient" ) patientArrayList.add(personArrayList.get(i));
         }
 
+        ListView listViewPatients = root.findViewById(R.id.listViewPatients);
 
-        PersonAdapter personAdapter2 = new PersonAdapter(root.getContext(),R.layout.list_row_admin,caregiversArrayList);
-        listViewCaregivers.setAdapter(personAdapter2);
+        PersonAdapter personAdapter1 = new PersonAdapter(root.getContext(), R.layout.list_row_admin,patientArrayList);
+        listViewPatients.setAdapter(personAdapter1);
 
-        listViewCaregivers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listViewPatients.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(root.getContext(), Profile.class);
-                TextView tv = (TextView)view.findViewById(R.id.txtCard1);
+                TextView tv = (TextView)view.findViewById(R.id.txtCard);
                 String name = tv.getText().toString();
                 intent.putExtra("name",name);
 
@@ -77,7 +73,6 @@ public class CareGiverFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.list_row_admin, container, false);
     }

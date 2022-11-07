@@ -1,4 +1,4 @@
-package com.example.stressmanagementapp;
+package com.example.stressmanagementapp.helpers;
 
 import android.content.Context;
 import android.util.Log;
@@ -12,11 +12,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.example.stressmanagementapp.R;
+import com.example.stressmanagementapp.models.Person;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -48,8 +46,6 @@ public class PersonAdapter extends ArrayAdapter<Person> {
         imageView.setImageResource(getItem(position).getImage());
         txtName.setText(getItem(position).getName());
         //txtEmail.setText(getItem(position).getEmail());
-
-
 
         return convertView;
     }

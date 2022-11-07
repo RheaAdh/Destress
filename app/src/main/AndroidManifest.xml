@@ -10,23 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StressManagementApp">
         <activity
-            android:name=".Home"
+            android:name=".views.Home"
             android:exported="false" />
         <activity
-            android:name=".Profile"
+            android:name=".views.Profile"
             android:exported="false" />
         <activity
-            android:name=".CareGiver"
+            android:name=".views.CareGiver"
             android:exported="false"></activity>
         <activity
-            android:name=".Admin"
-            android:exported="false"></activity>
-        <activity
-            android:name=".SignUp"
+            android:name=".views.SignUp"
             android:exported="false" >
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".views.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

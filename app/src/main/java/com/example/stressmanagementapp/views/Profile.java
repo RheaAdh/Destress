@@ -1,16 +1,15 @@
-package com.example.stressmanagementapp;
+package com.example.stressmanagementapp.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.stressmanagementapp.R;
 
 public class Profile extends AppCompatActivity {
 
@@ -19,11 +18,11 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
 
-        String name= "Pranshul";
+        String name= "Rhea";
         TextView err = (TextView) findViewById(R.id.textView);
         err.setText("Name : " + name);
 
-        String email= "pranshul20162002@gmail.com";
+        String email= "rheadhikari@gmail.com";
         TextView err1 = (TextView) findViewById(R.id.textView2);
         err1.setText("Email ID : "+email);
 
@@ -52,12 +51,12 @@ public class Profile extends AppCompatActivity {
     }
 
     public void nextPage(){
-        Intent intent = new Intent(Profile.this,Home.class);
+        Intent intent = new Intent(Profile.this, Home.class);
         startActivity(intent);
         return;
     }
     public void logout(){
-        Intent intent = new Intent(Profile.this,LoginActivity.class);
+        Intent intent = new Intent(Profile.this, LoginActivity.class);
         startActivity(intent);
         return;
     }

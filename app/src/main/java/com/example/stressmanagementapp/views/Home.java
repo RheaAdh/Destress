@@ -1,4 +1,4 @@
-package com.example.stressmanagementapp;
+package com.example.stressmanagementapp.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.example.stressmanagementapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Home extends AppCompatActivity {
@@ -27,12 +28,12 @@ public class Home extends AppCompatActivity {
     }
 
     public void nextPage(){
-        Intent intent = new Intent(Home.this,Profile.class);
+        Intent intent = new Intent(Home.this, Profile.class);
         startActivity(intent);
     }
     public void logout(){
         mAuth.signOut();
-        Intent intent = new Intent(Home.this,LoginActivity.class);
+        Intent intent = new Intent(Home.this, LoginActivity.class);
         startActivity(intent);
     }
     @Override

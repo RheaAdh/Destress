@@ -1,10 +1,11 @@
-package com.example.stressmanagementapp;
+package com.example.stressmanagementapp.models;
 
 public class Person {
+
     int Image;
     String name;
     String email;
-    String role;
+    public String role;
     private String password;
     String gender;
 
